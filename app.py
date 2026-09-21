@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 
 # 1. Load our trained model
-model = joblib.load(r"C:\Users\sarthak\Downloads\archive 4\car_price_model.pkl")
+model = joblib.load("models/car_price_model.pkl")
 # 2. App Title and Header
 st.set_page_config(page_title="Car Value Predictor", page_icon="🚗", layout="centered")
 st.title("🚗 Used Car Price Predictor")

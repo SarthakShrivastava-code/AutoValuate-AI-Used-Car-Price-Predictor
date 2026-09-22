@@ -11,7 +11,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Custom CSS: Executive Corporate Light Theme Palette
+# 2. Custom CSS: Executive Corporate Light Theme with Sidebar Contrast Fix
 st.markdown("""
 <style>
     /* Executive Off-White Background */
@@ -78,12 +78,34 @@ st.markdown("""
         margin-top: 5px;
     }
 
-    /* Sidebar Styling */
+    /* --- SIDEBAR TEXT CONTRAST FIX --- */
     section[data-testid="stSidebar"] {
-        background-color: #EDF2F7;
-        border-right: 1px solid #E2E8F0;
+        background-color: #EDF2F7 !important;
+        border-right: 1px solid #E2E8F0 !important;
     }
-    
+
+    /* Force all text elements in sidebar to Dark Slate & Navy */
+    section[data-testid="stSidebar"] * {
+        color: #2D3748 !important;
+    }
+
+    section[data-testid="stSidebar"] h1, 
+    section[data-testid="stSidebar"] h2, 
+    section[data-testid="stSidebar"] h3 {
+        color: #1A365D !important;
+        font-weight: 700 !important;
+    }
+
+    section[data-testid="stSidebar"] p, 
+    section[data-testid="stSidebar"] li, 
+    section[data-testid="stSidebar"] span {
+        color: #2D3748 !important;
+    }
+
+    section[data-testid="stSidebar"] .stCaption {
+        color: #718096 !important;
+    }
+
     /* Typography & Input Labels */
     h1, h2, h3, h4 {
         color: #1A365D !important;

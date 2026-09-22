@@ -11,19 +11,19 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Custom CSS: Tech Luxe Palette & Modern SaaS UI
+# 2. Custom CSS: Executive Corporate Light Theme Palette
 st.markdown("""
 <style>
-    /* Tech Luxe Background */
+    /* Executive Off-White Background */
     .stApp {
-        background-color: #121212;
-        color: #FFFFFF;
+        background-color: #F7FAFC;
+        color: #2D3748;
     }
 
-    /* Primary Accent Styling (Electric Teal / Mint Green) */
+    /* Primary Call-To-Action Button (Deep Navy Blue) */
     div.stButton > button:first-child {
-        background-color: #00F5D4 !important;
-        color: #121212 !important;
+        background-color: #1A365D !important;
+        color: #FFFFFF !important;
         font-weight: 700 !important;
         border: none !important;
         border-radius: 8px !important;
@@ -32,33 +32,33 @@ st.markdown("""
     }
 
     div.stButton > button:first-child:hover {
-        background-color: #00D2B5 !important;
-        box-shadow: 0 4px 15px rgba(0, 245, 212, 0.3) !important;
+        background-color: #2B6CB0 !important;
+        box-shadow: 0 4px 12px rgba(26, 54, 93, 0.25) !important;
         transform: translateY(-1px);
     }
 
-    /* Soft Container Cards (Dark Slate) */
+    /* Unified Soft Container Card (Pure White with Light Border) */
     .card-container {
-        background-color: #1E1E1E;
-        border: 1px solid #2D2D2D;
+        background-color: #FFFFFF;
+        border: 1px solid #E2E8F0;
         border-radius: 8px;
         padding: 24px;
         margin-bottom: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    /* Metric Cards */
+    /* Metric Result Cards */
     .metric-card {
-        background-color: #1E1E1E;
-        border: 1px solid #2D2D2D;
+        background-color: #FFFFFF;
+        border: 1px solid #E2E8F0;
         border-radius: 8px;
         padding: 20px;
         text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .metric-title {
-        color: #A0AEC0;
+        color: #718096;
         font-size: 13px;
         font-weight: 600;
         text-transform: uppercase;
@@ -66,28 +66,32 @@ st.markdown("""
     }
 
     .metric-value {
-        color: #00F5D4;
+        color: #1A365D;
         font-size: 32px;
         font-weight: 700;
         margin-top: 5px;
     }
 
     .metric-sub {
-        color: #A0AEC0;
+        color: #718096;
         font-size: 13px;
         margin-top: 5px;
     }
 
     /* Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background-color: #181818;
-        border-right: 1px solid #2D2D2D;
+        background-color: #EDF2F7;
+        border-right: 1px solid #E2E8F0;
     }
     
-    /* Input Labels */
+    /* Typography & Input Labels */
+    h1, h2, h3, h4 {
+        color: #1A365D !important;
+    }
+
     label {
-        color: #A0AEC0 !important;
-        font-weight: 500 !important;
+        color: #2D3748 !important;
+        font-weight: 600 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -103,7 +107,7 @@ except Exception as e:
     st.error("Model file not found. Ensure `models/car_price_model.pkl` exists in your repository.")
     st.stop()
 
-# 4. Balanced Sidebar Navigation
+# 4. Sidebar Navigation
 with st.sidebar:
     st.title("🚘 AutoValuate AI")
     st.caption("AI-Powered Resale Valuation Engine")
@@ -119,12 +123,12 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Powered by Scikit-Learn & Streamlit")
 
-# 5. Header Area (Clear Visual Hierarchy)
+# 5. Header Section
 st.title("AutoValuate AI: Used Car Price Predictor")
-st.markdown("<p style='color: #A0AEC0; font-size: 16px;'>Input vehicle specifications below to evaluate current market valuation and depreciation analysis.</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: #4A5568; font-size: 16px;'>Input vehicle specifications below to evaluate current market valuation and depreciation analysis.</p>", unsafe_allow_html=True)
 st.markdown("---")
 
-# 6. Inputs Area wrapped inside a Unified Soft Container Card
+# 6. Inputs Area inside Unified Soft Container
 st.markdown('<div class="card-container">', unsafe_allow_html=True)
 st.subheader("📋 Vehicle Profile")
 
@@ -147,9 +151,8 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 age = 2026 - year
 
-# 7. Action Button & Results Display
+# 7. Execution & Metric Display
 if st.button("🚀 Calculate Market Valuation", use_container_width=True):
-    # Map feature encoding
     fuel_diesel = 1 if fuel_type == "Diesel" else 0
     fuel_petrol = 1 if fuel_type == "Petrol" else 0
     seller_individual = 1 if seller_type == "Individual" else 0
@@ -183,7 +186,7 @@ if st.button("🚀 Calculate Market Valuation", use_container_width=True):
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-title">Original Showroom Value</div>
-            <div class="metric-value" style="color: #FFFFFF;">₹ {present_price:.2f} L</div>
+            <div class="metric-value" style="color: #2D3748;">₹ {present_price:.2f} L</div>
             <div class="metric-sub">Base Reference Price</div>
         </div>
         """, unsafe_allow_html=True)
@@ -192,7 +195,7 @@ if st.button("🚀 Calculate Market Valuation", use_container_width=True):
         st.markdown(f"""
         <div class="metric-card">
             <div class="metric-title">Total Depreciation</div>
-            <div class="metric-value" style="color: #FF5353;">{depreciation_pct:.1f}%</div>
+            <div class="metric-value" style="color: #E53E3E;">{depreciation_pct:.1f}%</div>
             <div class="metric-sub">Over {age} Years</div>
         </div>
         """, unsafe_allow_html=True)
